@@ -2,7 +2,23 @@
 
 
 <h3>EditPerson</h3>
+@if (Person != null) {
+    <PersonForm Person="Person" OnValidSubmit="Edit" />
+}
 
 @code {
     [Parameter] public int PersonId { get; set; }
+
+    Person Person;
+
+    protected override void OnInitialized()
+    {
+        Person = new Person() { Name = "Felipe", DateofBirth = DateTime.Today, Biography = "Something" };
+    }
+
+    private void Edit()
+    {
+        Console.WriteLine("Editing line");
+    }
+
 }
